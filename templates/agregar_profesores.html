@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agregar Profesor</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans Unicode', 'Arial', sans-serif;
+            background-color: #ede7d9;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #4d463e;
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #4d463e;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .button-container input[type="submit"] {
+            background-color: #c23b3b;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .button-container input[type="submit"]:hover {
+            background-color: #9d3131;
+        }
+
+        .button-container a {
+            text-decoration: none;
+            color: #9d8775;
+            margin-top: 10px;
+            display: block;
+            text-align: center;
+        }
+
+        .button-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agregar Profesor</h1>
+        <form action="/profesores/agregar" method="post">
+            <label for="nombres">Nombres:</label>
+            <input type="text" id="nombres" name="nombres" required>
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos" required>
+            <label for="id_colegio">ID Colegio:</label>
+            <input type="text" id="id_colegio" name="id_colegio" required>
+            <label for="area">Área:</label>
+            <input type="text" id="area" name="area" required>
+            <div class="button-container">
+                <input type="submit" value="Agregar">
+                <a href="/profesores">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

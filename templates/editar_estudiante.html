@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Estudiante</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans Unicode', 'Arial', sans-serif;
+            background-color: #ede7d9;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #4d463e;
+            text-align: center;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #4d463e;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            font-size: 14px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            background-color: #9d8775;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #7c6751;
+        }
+
+        a {
+            text-decoration: none;
+            color: #9d8775;
+            margin-top: 10px;
+            display: block;
+            text-align: center;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Estudiante</h1>
+        <form action="/estudiantes/editar/{{ estudiante[0] }}" method="post">
+            <label for="nombre">Nombres:</label>
+            <input type="text" id="nombre" name="nombre" value="{{ estudiante[1] }}" required>
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" id="apellidos" name="apellidos" value="{{ estudiante[2] }}" required>
+            <label for="id_colegio">ID Colegio:</label>
+            <input type="text" id="id_colegio" name="id_colegio" value="{{ estudiante[3] }}" required>
+            <label for="grado">Grado:</label>
+            <input type="text" id="grado" name="grado" value="{{ estudiante[4] }}" required>
+            <input type="submit" value="Guardar">
+        </form>
+        <a href="/estudiantes">Volver a la Lista de Estudiantes</a>
+    </div>
+</body>
+</html>

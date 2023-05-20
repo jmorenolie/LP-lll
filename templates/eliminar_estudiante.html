@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eliminar Estudiante</title>
+    <style>
+        body {
+            font-family: 'Lucida Sans Unicode', 'Arial', sans-serif;
+            background-color: #ede7d9;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #4d463e;
+            text-align: center;
+        }
+
+        p {
+            color: #4d463e;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #c23b3b;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #9d3131;
+        }
+
+        a {
+            text-decoration: none;
+            color: #9d8775;
+            margin-top: 10px;
+            display: block;
+            text-align: center;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Eliminar Estudiante</h1>
+        <p>¿Estás seguro de que deseas eliminar este estudiante?</p>
+        <form action="/estudiantes/eliminar/{{ estudiante[0] }}" method="post">
+            <input type="submit" value="Eliminar">
+        </form>
+        <a href="/estudiantes">Volver a la Lista de Estudiantes</a>
+    </div>
+</body>
+</html>

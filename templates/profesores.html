@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Profesores</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Lucida Sans Unicode', 'Arial', sans-serif;
+            background-color: #ede7d9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 5px;
+            margin-top: 100px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4d463e;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4d463e;
+        }
+
+        .btn-primary {
+            background-color: #9d8775;
+            border-color: #9d8775;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-right: 5px;
+        }
+
+        .btn-primary:hover {
+            background-color: #7c6751;
+            border-color: #7c6751;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Profesores</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Id Colegio</th>
+                    <th>Area</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for profesor in profesores %}
+                <tr>
+                    <td>{{ profesor[0] }}</td>
+                    <td>{{ profesor[1] }}</td>
+                    <td>{{ profesor[2] }}</td>
+                    <td>{{ profesor[3] }}</td>
+                    <td>{{ profesor[4] }}</td>
+                    <td>
+                        <a href="/profesores/editar/{{ profesor[0] }}" class="btn btn-primary">Editar</a>
+                        <a href="/profesores/eliminar/{{ profesor[0] }}" class="btn btn-primary">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/profesores/agregar" class="btn btn-primary">Agregar Profesor</a>
+        <div class="button-container">
+            <a href="/dashboard" class="btn btn-primary">Volver al Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistema de Colegio - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Lucida Sans Unicode', 'Arial', sans-serif;
+            background-color: #ede7d9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 5px;
+            margin-top: 100px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4d463e;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #4d463e;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            height: 50px;
+            font-size: 18px;
+            background-color: #9d8775;
+            border-color: #9d8775;
+            color: #fff;
+            margin-bottom: 15px;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary:hover {
+            background-color: #7c6751;
+            border-color: #7c6751;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .user-email {
+            font-size: 14px;
+            color: #4d463e;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .button-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .button-column .btn-primary {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Menu de opciones</h1>
+        <p class="user-email">Usuario: {{ session.email }}</p>
+        <div class="button-column">
+            <a href="/estudiantes" class="btn btn-primary">Gestionar Estudiantes</a>
+            <a href="/profesores" class="btn btn-primary">Gestionar Profesores</a>
+            <a href="/materias" class="btn btn-primary">Gestionar Materias</a>
+            <a href="/logout" class="btn btn-primary">Cerrar Sesión</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+Cuenta con la BD en postgress.
+Lenguajes: Phyton
+Framework: Flask
+
+Cuenta la API con:
+Dashboar (Redirige a Materias, Profesores, Estudiantes)
+CRUD de Materias, Profesores, Estudiantes
+Diseño diferente en cada una.
