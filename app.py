@@ -1,10 +1,7 @@
 from flask import Flask, render_template, request, redirect, session, g
 import psycopg2
-from werkzeug.security import check_password_hash
-from dotenv import load_dotenv
 from os import environ
 
-load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = 'peyuyi0611'
