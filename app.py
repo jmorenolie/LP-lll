@@ -20,6 +20,10 @@ def get_db_connection():
 def close_db_connection(conn):
     conn.close()
 
+@app.route('/')
+def index():
+    return redirect('/login')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
