@@ -1,12 +1,13 @@
+##Librerias
 from flask import Flask, render_template, request, redirect, session, g
 import psycopg2
 from os import environ
 
-
+##Nombres
 app = Flask(__name__)
 app.secret_key = 'peyuyi0611'
 
-
+##Conexión a la BD de Azure, con las credenciales de Azure
 def get_db_connection():
     conn = psycopg2.connect(
         host="linea.postgres.database.azure.com",
@@ -17,13 +18,16 @@ def get_db_connection():
     )
     return conn
 
+##Cerrar Conexión
 def close_db_connection(conn):
     conn.close()
 
+#Iniciar directamente desde el /login
 @app.route('/')
 def index():
     return redirect('/login')
 
+#El login de la págna
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -46,6 +50,7 @@ def login():
 
     return render_template('login.html')
 
+#Opcion registrar nuevo colegio
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -66,6 +71,7 @@ def register():
 
     return render_template('register.html')
 
+#Dashboard principal, menu de opciones
 @app.route('/dashboard')
 def dashboard():
     if 'email' in session:
@@ -73,12 +79,13 @@ def dashboard():
     else:
         return redirect('/login')
 
+#Salirse de la sesión
 @app.route('/logout')
 def logout():
     session.pop('email', None)
     return redirect('/login')
 
-############################################################################Estudiantes
+#Listar Estudiantes
 @app.route('/estudiantes')
 def estudiantes():
     conn = get_db_connection()
@@ -89,6 +96,7 @@ def estudiantes():
     close_db_connection(conn)
     return render_template('estudiantes.html', estudiantes=estudiantes)
 
+#Agregar un nuevoe estudiante
 @app.route('/estudiantes/agregar', methods=['GET', 'POST'])
 def agregar_estudiante():
     if request.method == 'POST':
@@ -108,6 +116,7 @@ def agregar_estudiante():
     
     return render_template('agregar_estudiante.html')
 
+#Estudiantes editar
 @app.route('/estudiantes/editar/<int:id>', methods=['GET', 'POST'])
 def editar_estudiante(id):
     conn = get_db_connection()
@@ -133,6 +142,7 @@ def editar_estudiante(id):
     
     return render_template('editar_estudiante.html', estudiante=estudiante)
 
+#Estudiantes Eliminar
 @app.route('/estudiantes/eliminar/<int:id>', methods=['GET', 'POST'])
 def eliminar_estudiantes(id):
     conn = get_db_connection()
@@ -154,7 +164,7 @@ def eliminar_estudiantes(id):
 
 ############################################################################################### FIN ESTUDIANTES
 
-############################################Profesores
+#Listar profesores
 @app.route('/profesores')
 def profesores():
     conn = get_db_connection()
@@ -165,6 +175,7 @@ def profesores():
     close_db_connection(conn)
     return render_template('profesores.html', profesores=profesores)
 
+#Agregar profesores
 @app.route('/profesores/agregar', methods=['GET', 'POST'])
 def agregar_profesores():
     if request.method == 'POST':
@@ -184,6 +195,7 @@ def agregar_profesores():
     
     return render_template('agregar_profesores.html')
 
+#Editar profesores
 @app.route('/profesores/editar/<int:id>', methods=['GET', 'POST'])
 def editar_profesores(id):
     conn = get_db_connection()
@@ -209,6 +221,7 @@ def editar_profesores(id):
     
     return render_template('editar_profesor.html', profesores=profesores)
 
+#Eliminar profesores
 @app.route('/profesores/eliminar/<int:id>', methods=['GET', 'POST'])
 def eliminar_profesor(id):
     conn = get_db_connection()
@@ -228,7 +241,9 @@ def eliminar_profesor(id):
 
     return render_template('eliminar_profesor.html', profesor=profesor)
 
-######################################################################  MATERIAS
+###################################################################### FINAL PROFESORES
+
+#Listar Materias
 @app.route('/materias')
 def materias():
     conn = get_db_connection()
@@ -239,6 +254,7 @@ def materias():
     close_db_connection(conn)
     return render_template('materias.html', materias=materias)
 
+#Agregar Materias
 @app.route('/materias/agregar', methods=['GET', 'POST'])
 def agregar_materias():
     if request.method == 'POST':
@@ -257,6 +273,7 @@ def agregar_materias():
     
     return render_template('agregar_materias.html')
 
+#Editar Materias
 @app.route('/materias/editar/<int:id>', methods=['GET', 'POST'])
 def editar_materias(id):
     conn = get_db_connection()
@@ -281,6 +298,7 @@ def editar_materias(id):
     
     return render_template('editar_materias.html', materias=materias)
 
+#Eliminar Materias
 @app.route('/materias/eliminar/<int:id>', methods=['GET', 'POST'])
 def eliminar_materias(id):
     conn = get_db_connection()
@@ -300,6 +318,6 @@ def eliminar_materias(id):
 
     return render_template('eliminar_materias.html', materias=materias)
 
-
+#Fin del código
 if __name__ == '__main__':
     app.run(debug=True)
